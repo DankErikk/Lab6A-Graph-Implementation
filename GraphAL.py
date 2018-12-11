@@ -173,9 +173,20 @@ class GraphAL:
             s += " None\n"
 
         return s
-
-    def get_vertex_in_degree(self, v):
+    def get_adj_vertices(self, v):
         if not self.is_valid_vertex(v):
+            return
+        vertices = []
+        temp = self.adj_list[v]
+
+        while temp != None:
+            vertices.append(temp.item)
+            temp = temp.next
+
+        return vertices
+    
+    def get_vertex_in_degree(self, v):
+        if not self.is_valid_vertex(v.item):
             return
 
         in_degree_count = 0
